@@ -12,7 +12,7 @@
 		TRAIT_LITERATE,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_REPTILE
-	mutant_bodyparts = list("body_markings" = "None")
+	//mutant_bodyparts = list("body_markings" = "None")
 	external_organs = list(
 		///obj/item/organ/external/vox_head_frills = "None",
 		///obj/item/organ/external/vox_neck_frills = "None",
@@ -32,7 +32,7 @@
 	meat = /obj/item/food/meat/slab/chicken
 	disliked_food = GRAIN
 	liked_food = MEAT | NUTS | BUGS
-	//deathsound = 'sound/voice/lizard/deathsound.ogg'
+	death_sound = 'orbstation/sound/voice/vox/vox_deathsound.ogg'
 	wings_icons = list("Angel")
 	species_language_holder = /datum/language_holder/vox
 
@@ -66,9 +66,8 @@
 
 /datum/species/vox/get_scream_sound(mob/living/carbon/human/vox)
 	return pick(
-		'sound/voice/lizard/lizard_scream_1.ogg',
-		'sound/voice/lizard/lizard_scream_2.ogg',
-		'sound/voice/lizard/lizard_scream_3.ogg',
+		'orbstation/sound/voice/vox/vox_scream_1.ogg',
+		'orbstation/sound/voice/vox/vox_scream_2.ogg',
 	)
 
 /datum/species/vox/get_species_description()
