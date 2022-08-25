@@ -715,8 +715,13 @@
 			if(burnstate)
 				. += image('icons/mob/dam_mob.dmi', "[dmg_overlay_type]_[body_zone]_0[burnstate]", -DAMAGE_LAYER, image_dir)
 
-	var/image/limb = image(layer = -BODYPARTS_LAYER, dir = image_dir)
+	var/image/limb
 	var/image/aux
+
+	if(istype(src, /obj/item/bodypart/head/vox)) //ugly, but vox heads need to render differently because of how this code works
+		limb = image(layer = -BODY_ADJ_LAYER, dir = image_dir)
+	else
+		limb = image(layer = -BODYPARTS_LAYER, dir = image_dir)
 
 	if(animal_origin)
 		if(IS_ORGANIC_LIMB(src))

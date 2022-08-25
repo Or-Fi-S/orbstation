@@ -12,14 +12,12 @@
 		TRAIT_LITERATE,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_REPTILE
-	//mutant_bodyparts = list("body_markings" = "None")
 	external_organs = list(
-		///obj/item/organ/external/vox_head_frills = "None",
-		///obj/item/organ/external/vox_neck_frills = "None",
+		/obj/item/organ/external/tail/vox = "Vox",
+		/obj/item/organ/external/vox_head_quills = "None",
+		/obj/item/organ/external/vox_neck_quills = "None",
 	)
 	mutanttongue = /obj/item/organ/internal/tongue/vox
-	//coldmod = 0.67
-	//heatmod = 1.5
 	payday_modifier = 1.0
 	punchdamagelow = 6
 	punchdamagehigh = 12
@@ -46,6 +44,16 @@
 		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/vox,
 		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/vox,
 	)
+
+	species_eye_path = 'orbstation/icons/mob/species/vox/vox_parts.dmi'
+
+/datum/species/vox/on_species_gain(mob/living/carbon/C, datum/species/old_species, pref_load)
+	..()
+	C.set_base_pixel_x(-8)
+
+/datum/species/vox/on_species_loss(mob/living/carbon/human/C, datum/species/new_species, pref_load)
+	..()
+	C.set_base_pixel_x(0)
 
 /datum/species/vox/random_name(gender,unique,lastname)
 	if(unique)

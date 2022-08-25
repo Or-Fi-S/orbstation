@@ -40,7 +40,7 @@
 #define DNA_UNI_IDENTITY_BLOCKS 7
 
 /// This number needs to equal the total number of DNA blocks
-#define DNA_FEATURE_BLOCKS 15
+#define DNA_FEATURE_BLOCKS 18
 
 #define DNA_MUTANT_COLOR_BLOCK 1
 #define DNA_ETHEREAL_COLOR_BLOCK 2
@@ -57,6 +57,9 @@
 #define DNA_MOTH_MARKINGS_BLOCK 13
 #define DNA_MUSHROOM_CAPS_BLOCK 14
 #define DNA_POD_HAIR_BLOCK 15
+#define DNA_VOX_TAIL_BLOCK 16
+#define DNA_VOX_HEAD_QUILLS_BLOCK 17
+#define DNA_VOX_NECK_QUILLS_BLOCK 18
 
 #define DNA_SEQUENCE_LENGTH 4
 #define DNA_MUTATION_BLOCKS 8
@@ -133,6 +136,8 @@
 #define ORGAN_SLOT_EXTERNAL_ANTENNAE "antennae"
 #define ORGAN_SLOT_EXTERNAL_BODYMARKINGS "bodymarkings"
 #define ORGAN_SLOT_EXTERNAL_POD_HAIR "pod_hair"
+#define ORGAN_SLOT_EXTERNAL_VOX_HEAD_QUILLS "vox_head_quills"
+#define ORGAN_SLOT_EXTERNAL_VOX_NECK_QUILLS "vox_neck_quills"
 
 /// Xenomorph organ slots
 #define ORGAN_SLOT_XENO_ACIDGLAND "acid_gland"

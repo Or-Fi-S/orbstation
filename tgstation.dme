@@ -4701,6 +4701,7 @@
 #include "orbstation\medical\surgery\pacification.dm"
 #include "orbstation\mob\living\carbon\human\species_types\vox.dm"
 #include "orbstation\mob\simple_animal\friendly\amoung.dm"
+#include "orbstation\modules\client\preferences\species_features\vox.dm"
 #include "orbstation\modules\language\language_holder.dm"
 #include "orbstation\modules\language\vox_pidgin.dm"
 #include "orbstation\modules\research\designs\mechfabricator_designs.dm"

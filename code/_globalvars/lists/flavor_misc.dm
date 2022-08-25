@@ -335,3 +335,8 @@ GLOBAL_LIST_INIT(admiral_messages, list(
 ))
 
 GLOBAL_LIST_INIT(junkmail_messages, world.file2list("strings/junkmail.txt"))
+
+//Orbstation
+GLOBAL_LIST_EMPTY(tails_list_vox)
+GLOBAL_LIST_EMPTY(vox_head_quills_list)
+GLOBAL_LIST_EMPTY(vox_neck_quills_list)

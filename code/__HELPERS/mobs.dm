@@ -89,7 +89,13 @@
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/moth_markings, GLOB.moth_markings_list)
 	if(!GLOB.pod_hair_list.len)
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/pod_hair, GLOB.pod_hair_list)
-
+	//Orbstation
+	if(!GLOB.tails_list_vox.len)
+		init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/vox, GLOB.tails_list_vox, add_blank = TRUE)
+	if(!GLOB.vox_head_quills_list)
+		init_sprite_accessory_subtypes(/datum/sprite_accessory/vox_head_quills, GLOB.vox_head_quills_list, add_blank = TRUE)
+	if(!GLOB.vox_neck_quills_list)
+		init_sprite_accessory_subtypes(/datum/sprite_accessory/vox_neck_quills, GLOB.vox_neck_quills_list, add_blank = TRUE)
 	//For now we will always return none for tail_human and ears. | "For now" he says.
 	return(list(
 		"mcolor" = "#[pick("7F","FF")][pick("7F","FF")][pick("7F","FF")]",
@@ -110,6 +116,9 @@
 		"moth_markings" = pick(GLOB.moth_markings_list),
 		"tail_monkey" = "None",
 		"pod_hair" = pick(GLOB.pod_hair_list),
+		"tail_vox" = "Vox",
+		"vox_head_quills" = "None",
+		"vox_neck_quills" = "None",
 	))
 
 /proc/random_hairstyle(gender)

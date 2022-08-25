@@ -105,8 +105,10 @@
 	if(!istype(parent) || parent.getorgan(/obj/item/organ/internal/eyes) != src)
 		CRASH("Generating a body overlay for [src] targeting an invalid parent '[parent]'.")
 
-	var/mutable_appearance/eye_left = mutable_appearance('icons/mob/human_face.dmi', "[eye_icon_state]_l", -BODY_LAYER)
-	var/mutable_appearance/eye_right = mutable_appearance('icons/mob/human_face.dmi', "[eye_icon_state]_r", -BODY_LAYER)
+	var/spec_eye_path = parent.dna?.species.species_eye_path
+
+	var/mutable_appearance/eye_left = mutable_appearance(spec_eye_path || 'icons/mob/human_face.dmi', "[eye_icon_state]_l", -BODY_LAYER)
+	var/mutable_appearance/eye_right = mutable_appearance(spec_eye_path || 'icons/mob/human_face.dmi', "[eye_icon_state]_r", -BODY_LAYER)
 
 	if(EYECOLOR in parent.dna?.species.species_traits)
 		eye_right.color = eye_color_right

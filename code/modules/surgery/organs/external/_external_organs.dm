@@ -438,3 +438,34 @@
 	var/list/rgb_list = rgb2num(rgb_value)
 	return rgb(255 - rgb_list[1], 255 - rgb_list[2], 255 - rgb_list[3])
 
+/obj/item/organ/external/vox_head_quills
+	name = "head quills"
+	desc = "pointy lmao"
+
+	zone = BODY_ZONE_HEAD
+	slot = ORGAN_SLOT_EXTERNAL_VOX_HEAD_QUILLS
+	layers = EXTERNAL_ADJACENT
+
+	feature_key = "vox_head_quills"
+	preference = "feature_vox_head_quills"
+
+	dna_block = DNA_VOX_HEAD_QUILLS_BLOCK
+
+/obj/item/organ/external/vox_head_quills/get_global_feature_list()
+	return GLOB.vox_head_quills_list
+
+/obj/item/organ/external/vox_neck_quills
+	name = "neck quills"
+	desc = "pointy lmao"
+
+	zone = BODY_ZONE_HEAD
+	slot = ORGAN_SLOT_EXTERNAL_VOX_NECK_QUILLS
+	layers = EXTERNAL_ADJACENT
+
+	feature_key = "vox_neck_quills"
+	preference = "feature_vox_neck_quills"
+
+	dna_block = DNA_VOX_NECK_QUILLS_BLOCK
+
+/obj/item/organ/external/vox_neck_quills/get_global_feature_list()
+	return GLOB.vox_neck_quills_list

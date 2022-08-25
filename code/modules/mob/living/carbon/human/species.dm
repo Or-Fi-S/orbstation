@@ -248,6 +248,15 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	///Was the species changed from its original type at the start of the round?
 	var/roundstart_changed = FALSE
 
+	//ORBSTATION VARS
+	//hopefully these don't break anything down the line
+
+	//path for alternate eye icons; defaults to 'icons/mob/human_face.dmi'
+	var/species_eye_path
+
+	//path for alternate species clothing
+	var/species_clothing_path
+
 ///////////
 // PROCS //
 ///////////
@@ -579,7 +588,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 				add_pixel_y = species_human.dna.species.offset_features[OFFSET_FACE][2]
 
 			if(!eye_organ)
-				no_eyeslay = mutable_appearance('icons/mob/human_face.dmi', "eyes_missing", -BODY_LAYER)
+				no_eyeslay = mutable_appearance(species_eye_path || 'icons/mob/human_face.dmi', "eyes_missing", -BODY_LAYER)
 				no_eyeslay.pixel_x += add_pixel_x
 				no_eyeslay.pixel_y += add_pixel_y
 				standing += no_eyeslay
