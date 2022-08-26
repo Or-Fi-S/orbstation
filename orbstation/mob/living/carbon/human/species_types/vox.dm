@@ -47,6 +47,8 @@
 
 	species_eye_path = 'orbstation/icons/mob/species/vox/vox_parts.dmi'
 
+	damage_overlay_type = ""
+
 /datum/species/vox/on_species_gain(mob/living/carbon/C, datum/species/old_species, pref_load)
 	..()
 	C.set_base_pixel_x(-8)

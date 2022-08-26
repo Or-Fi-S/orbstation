@@ -13,6 +13,7 @@
 	is_dimorphic = FALSE
 	bodytype = BODYTYPE_VOX | BODYTYPE_ORGANIC
 	should_draw_greyscale = FALSE
+	acceptable_bodytype = BODYTYPE_VOX
 
 /obj/item/bodypart/l_arm/vox
 	icon_static = 'orbstation/icons/mob/species/vox/bodyparts.dmi'

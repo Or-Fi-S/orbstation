@@ -462,16 +462,22 @@
 	. = ..()
 	if(!chests)
 		chests = typesof(/obj/item/bodypart/chest)
+		chests.Remove(/obj/item/bodypart/chest/vox)
 	if(!heads)
 		heads = typesof(/obj/item/bodypart/head)
+		heads.Remove(/obj/item/bodypart/head/vox)
 	if(!l_arms)
 		l_arms = typesof(/obj/item/bodypart/l_arm)
+		l_arms.Remove(/obj/item/bodypart/l_arm/vox)
 	if(!r_arms)
 		r_arms = typesof(/obj/item/bodypart/r_arm)
+		r_arms.Remove(/obj/item/bodypart/r_arm/vox)
 	if(!l_legs)
 		l_legs = typesof(/obj/item/bodypart/l_leg)
+		l_legs.Remove(/obj/item/bodypart/l_leg/vox)
 	if(!r_legs)
 		r_legs = typesof(/obj/item/bodypart/r_leg)
+		r_legs.Remove(/obj/item/bodypart/r_leg/vox)
 
 /obj/effect/anomaly/bioscrambler/anomalyEffect(delta_time)
 	. = ..()
@@ -487,6 +493,36 @@
 	for(var/mob/living/carbon/nearby in range(swap_range, src))
 		if(nearby.run_armor_check(attack_flag = BIO, absorb_text = "Your armor protects you from [src]!") >= 100)
 			continue //We are protected
+		if(nearby.dna?.species.id == "vox") //vox cannot be safely bioscrambled - cause alternate problems for them
+			var/bad_effect = rand(1,3)
+			var/zones_vox
+			var/picked_vox_zone
+			var/obj/item/bodypart/picked_vox_part
+			switch(bad_effect)
+				if(1) //dismember random limb
+					zones_vox = list(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
+					picked_vox_zone = pick(zones_vox)
+					picked_vox_part = nearby.get_bodypart(picked_vox_zone)
+					if(picked_vox_part)
+						to_chat(nearby, span_warning("Your [picked_vox_part] violently rips from your body, disintegrating in a shower of blood!"))
+						picked_vox_part.dismember()
+						qdel(picked_vox_part)
+				if(2) //break random bone
+					zones_vox = list(BODY_ZONE_CHEST, BODY_ZONE_HEAD, BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
+					picked_vox_zone = pick(zones_vox)
+					picked_vox_part = nearby.get_bodypart(picked_vox_zone)
+					if(picked_vox_part)
+						to_chat(nearby, span_warning("Your [picked_vox_part] begins resonating violently!"))
+						var/type_wound = pick(list(/datum/wound/blunt/critical, /datum/wound/blunt/severe, /datum/wound/blunt/moderate))
+						picked_vox_part.force_wound_upwards(type_wound)
+				if(3) //deal toxin damage
+					to_chat(nearby, span_warning("Your stomach churns as your body twists unnaturally!"))
+					nearby.vomit()
+					nearby.adjustToxLoss(30)
+					nearby.blur_eyes(20)
+					nearby.set_timed_status_effect(10 SECONDS, /datum/status_effect/dizziness)
+			continue //we've had our fun
+
 		var/picked_zone = pick(zones)
 		var/obj/item/bodypart/picked_user_part = nearby.get_bodypart(picked_zone)
 		var/obj/item/bodypart/picked_part
